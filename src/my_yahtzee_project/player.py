@@ -1,7 +1,7 @@
 from typing import List, Dict
 from scoring import Scoring
 from dice import YahtzeeDice
-from display_dice import display_dice
+from display_Dice import display_dice
 
 class Player:
 
@@ -9,12 +9,19 @@ class Player:
 
     def __init__(self):
             Player.player_id += 1
-            self.id = Player.player_id
-            print("---------------------------------------------------------------")
-            print(f"Player {self.id}, enter your name: ")
-            self.name = input()
+            if Player.player_id ==1:
+                self.id = Player.player_id
+                print("---------------------------------------------------------------")
+                print(f"Player {self.id}, Ai ")
+                self.name = "Ai"
+            else:
+                self.id = Player.player_id
+                print("---------------------------------------------------------------")
+                print(f"Player {self.id}, enter your name: ")
+                self.name = input()
     def get_name(self):
         return self.name
+        
 
     def get_id(self):
         return self.id
@@ -24,6 +31,7 @@ class PlayerTurn():
         yahtzee_set = YahtzeeDice()
         values = [None] * yahtzee_set.num_dice
         held_indices = []
+        print("---------------------------------------------------------------")  
         print("Are you ready to roll the dice?")
         display_dice(values)
                 # Roll the dice and display

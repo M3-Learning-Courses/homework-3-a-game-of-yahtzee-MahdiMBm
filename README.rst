@@ -34,6 +34,7 @@ my_yahtzee_project
 ==================
 Yahtzee Python Package
 Objective
+Play Yahtzee Game and try to defeat an wise player who is named Ai!
 This Python package implements the logic for simulating dice rolls in a Yahtzee game. The project leverages Python’s object-oriented programming features and advanced data structures to accomplish this.
 
 Rules of the Game of Yahtzee
@@ -97,9 +98,10 @@ Optionally, run pip list to ensure that the required packages are installed.
 
 
 Usage
-Run the "play_yahtzee" then you will be asked to enter the number of the users who want to play.
+Run the "play_yahtzee" then you will be asked to enter the number of the users who want to play. Then enter the number of the player including the Ai player.
 Each user will be asked to enter their name.
-Five undetermined dice will be shown, and users will be asked to press enter for rolling dice.
+The Ai player will start the game! Be patience and watch the the Ai's movement! 
+Then, five undetermined dice will be shown, and users will be asked to press enter for rolling dice.
 The results of the rolling dice will be shown graphically, and the user can keep dice by entering their numbers (Enter the numbers (1-5) of dice you want to keep (separated by spaces)).
 The previous step will be repeated.
 A graphical window (named Yahtzee scorer) will be automatically opened. This window lets the user see possible scores in each selectable category and then select one of them. The score of the player is also presented until now.

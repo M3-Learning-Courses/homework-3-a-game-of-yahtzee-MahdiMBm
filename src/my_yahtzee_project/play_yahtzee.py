@@ -2,6 +2,7 @@ from player import Player, PlayerTurn
 from colorama import Fore, Style
 import pyfiglet
 from termcolor import colored
+from Ai_Player import PlayerTurn_ai
 def generate_block_art():
     art = """
   _____          __  __ ______    ______      ________ _____  
@@ -24,19 +25,25 @@ def generate_block_art():
 # while loop for replayability
 play_again = True
 while play_again:
-        
+    num_players=[]
     # global initial_cal
-    num_players = int(input("Enter the number of players: "))
+    print("---------------------------------------------------------------")  
+    num_players = int(input("Enter the number of players including Ai player: "))
+    # num_players =num_players +1
     All_names = []
     Save_initial = []
     All_names = []
+    player =[]
+    All_names=[]
     player_scores = [[] for i in range(num_players)]
     player_scores_details = [[] for i in range(num_players)]
 
+
     # Gather names of each player
     for i in range(num_players):
-        player = Player()
-        All_names.append(player.get_name())
+
+            player = Player()
+            All_names.append(player.get_name())
 
     # For each player, run their turn and store their scores
     player_scores = [["" for i in range(14)] for j in range(num_players)]
@@ -44,18 +51,30 @@ while play_again:
 
     for j in range(13):
         for i in range(num_players):
+
             initial_cal = player_scores[i]
-            print("---------------------------------------------------------------")
-            print(f"Player {i + 1}: {All_names[i]}")
-            player_turn = PlayerTurn(initial_cal)
-            # player_turn.total_score, player_turn.updated_matrix = player_turn.calculate_score()
-            total_score = player_turn.get_total_score()
-            updated_matrix = player_turn.get_updated_matrix()
-        # print(f"Total Score: {total_score}")
-        # print(f"Updated Matrix: {updated_matrix}")
+            print("--------------------------------------------------------------------------------------")  
+            
+            if i==0:
+
+                
+                player_turn = PlayerTurn_ai(initial_cal)
+                total_score = player_turn.get_total_score()
+                updated_matrix = player_turn.get_updated_matrix()            
+            else: 
+                # print(initial_cal)
+                print(f"Player {i + 1}: {All_names[i]}")
+                player_turn = PlayerTurn(initial_cal)
+                total_score = player_turn.get_total_score()
+                updated_matrix = player_turn.get_updated_matrix()
+                print("--------------------------------------------------------------------------------------")  
+ 
+                print(f"| {All_names[i]}                           |     The total score for {All_names[i]} is:   {total_score}   |")
+  
+            # player_scores.append((total_score,updated_matrix))
+
             player_scores[i].append(updated_matrix)
             player_scores_details[i].append(total_score)
-        # player_scores.append((total_score,updated_matrix))
     all_final_score=[]
     # Display results for each player
     for i, name in enumerate(All_names):
@@ -91,3 +110,5 @@ while play_again:
     replay_input = input("Do you want to play again? (yes/no): ")
     if replay_input.lower() != 'yes':
         play_again = False
+    else:
+        player_id=0
